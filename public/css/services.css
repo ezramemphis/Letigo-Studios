@@ -1,0 +1,112 @@
+
+/* Parallax Section */
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+  background-image: url('../images/hip-hop.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.parallax-content {
+  max-width: 100%; /* allow full width to edge */
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 60px 50px; /* padding from edges */
+  box-sizing: border-box;
+}
+
+/* --- Services Grid --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row by default */
+  gap: 40px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  justify-items: center;
+  box-sizing: border-box;
+}
+
+/* Individual Service Card */
+.service-card {
+  background: #1e1e1e;
+  height: 400px; /* default desktop height */
+  padding: 70px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+}
+
+/* Order Now button */
+.order-btn {
+  background: #00aaff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 12px 25px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.order-btn:hover {
+  background: #008fcc;
+  transform: scale(1.05);
+}
+
+/* --- Responsive Layout --- */
+
+/* 2x2 grid for medium screens, trigger sooner */
+@media (max-width: 1024px) {
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    gap: 25px;
+    max-width: 95%;
+    margin: 0 auto;          /* center horizontally */
+    justify-items: stretch; /* make each grid item fill its column */
+  }
+
+  .service-card {
+    height: 200px; /* half height */
+    padding: 40px 15px; /* reduced horizontal padding */
+  }
+  
+  .parallax-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Small Devices (iPhone / <480px) */
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    max-width: 100%;
+    padding: 0 10px; /* reduce side padding */
+  }
+
+  .service-card {
+    height: 200px; /* maintain half height */
+    padding: 30px 10px; /* less horizontal padding */
+  }
+
+  .parallax-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

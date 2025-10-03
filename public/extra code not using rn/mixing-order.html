@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Mixing - Letigo Studios</title>
+  <link rel="stylesheet" href="orders.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+  <div class="order-form-container">
+    <h1>Mixing Order Form</h1>
+    <form id="mixingForm">
+
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="quantity">Quantity of Songs</label>
+      <input type="number" id="quantity" name="quantity" min="1" value="1" required />
+
+      <label for="notes">Extra Notes</label>
+      <textarea id="notes" name="notes" rows="5" placeholder="Anything we should know?"></textarea>
+
+      <label for="fileUpload">Upload Your Files</label>
+      <input type="file" id="fileUpload" name="files" accept=".rar,.zip,.7zip,.tar,.wim,.wav" multiple />
+      <p class="file-requirements">
+        Max file size: 2.00 GB. Allowed file types: rar, zip, 7zip, tar, wim, wav. Max 10 files. Min 1 file (you can upload later).
+      </p>
+
+      <fieldset>
+        <legend>Add-ons</legend>
+        <label><input type="checkbox" name="addons" value="vocal_tuning" /> Professional Vocal Tuning (+$25)</label><br>
+        <label><input type="checkbox" name="addons" value="instrumental_mix" /> Instrumental Mix Included (+$15)</label><br>
+        <label><input type="checkbox" name="addons" value="stems" /> Delivery of Final Stems (+$20)</label>
+      </fieldset>
+
+      <div class="stripe-payment">
+        <p>Total will be calculated after form submission.</p>
+        <button type="submit" id="submitBtn">Proceed to Payment</button>
+      </div>
+
+    </form>
+  </div>
+
+  <script>
+    const stripe = Stripe("pk_test_51Rqj5yAPDg9HSvSo9ADrhG0mXpn2xoOhixllCgrQ6XYiavLJb3eDSiJnZPI2yjTSWFWjL0jnynoy9LzrNz2RwnUS00757G1JTW"); // Replace with your Stripe publishable key
+
+    document.getElementById("mixingForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const fullName = form.fullName.value.trim();
+      const email = form.email.value.trim();
+      const quantity = parseInt(form.quantity.value, 10) || 1;
+      const notes = form.notes.value.trim();
+      const addons = Array.from(form.querySelectorAll('input[name="addons"]:checked')).map(cb => cb.value);
+
+      // Optional: you can do client-side validation for file upload size/types here if needed
+
+      try {
+        const response = await fetch("/create-checkout-session", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ fullName, email, quantity, notes, addons }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const session = await response.json();
+
+        if (session.id) {
+          await stripe.redirectToCheckout({ sessionId: session.id });
+        } else {
+          alert("Failed to create Stripe checkout session.");
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        alert("An error occurred. Please try again.");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+/* Animated gradient background for entire contact section */
+#contact {
+  position: relative;
+  /* Add a transparent gradient fading from #0e0e0e to transparent */
+  background: 
+    linear-gradient(to bottom, rgba(14,14,14,1) 0%, rgba(14,14,14,0) 50%),
+  linear-gradient(270deg, #0e0e0e, #1a1a1a, #0e0e0e, #1a1a1a);
+  background-size: 800% 800%;
+  animation: gradientShift 20s ease infinite;
+  color: #fff;
+  padding: 40px 20px 80px;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientShift {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Glassmorphism effect on the form */
+#contact form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 40px 40px 60px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtle moving particles behind the form */
+#contact::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,0.07) 2px, transparent 3px),
+              radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 2px);
+  background-position: 0 0, 40px 40px;
+  background-size: 80px 80px;
+  animation: particleMove 60s linear infinite;
+  border-radius: 16px;
+  z-index: 0;
+}
+
+@keyframes particleMove {
+  0% {background-position: 0 0, 40px 40px;}
+  100% {background-position: 80px 80px, 0 0;}
+}
+
+/* Floating labels container */
+.floating-label {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+/* UPDATED: Make labels static and fixed above inputs */
+#contact label {
+  position: relative; /* or just remove position */
+  top: auto;
+  left: auto;
+  transform: none;
+  display: block;         /* so it sits on its own line */
+  margin-bottom: 6px;     /* some space below label */
+  color: #aaa;
+  font-weight: 600;
+  font-size: 1rem;
+  pointer-events: auto;
+  user-select: text;
+  background-color: transparent;
+}
+
+/* Remove floating label focus and non-empty input styles */
+#contact input:focus + label,
+#contact input:not(:placeholder-shown) + label,
+#contact textarea:focus + label,
+#contact textarea:not(:placeholder-shown) + label {
+  top: auto;
+  font-size: 1rem;
+  color: #aaa;
+  background-color: transparent;
+  transform: none;
+}
+
+/* Inputs and textarea base style */
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 18px 15px 6px; /* extra top padding for label */
+  border: none;
+  border-radius: 6px;
+  background-color: #222;
+  color: #fff;
+  font-size: 1rem;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+/* Placeholder hidden to avoid overlap */
+#contact input::placeholder,
+#contact textarea::placeholder {
+  color: transparent;
+}
+
+/* Textarea min height */
+#contact textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Button base style */
+#contact button {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(230, 57, 70, 0.5);
+}
+
+/* Button hover with scale + glow */
+#contact button:hover {
+  background-color: #ff4d5a;
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 77, 90, 0.75);
+}
+
+/* Error microinteraction */
+/* Apply 'error' class on input/textarea for errors */
+#contact input.error,
+#contact textarea.error {
+  border: 2px solid #e63946;
+  animation: shake 0.3s ease;
+}
+
+/* Shake animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0);}
+  20%, 60% { transform: translateX(-5px);}
+  40%, 80% { transform: translateX(5px);}
+}

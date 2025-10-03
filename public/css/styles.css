@@ -1,0 +1,640 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #0e0e0e;
+  color: #f1f1f1;
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+header {
+  background: #1a1a1a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  padding: 10px 30px;
+}
+
+/* Header nav flex container */
+.header-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 850px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+/* Site title in center */
+.site-title {
+  margin: 0;
+  font-size: 1.8em;
+  color: #f1f1f1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-align: center;
+  flex-grow: 0;
+  user-select: none;
+}
+
+/* Left and right nav groups */
+.nav-left,
+.nav-right {
+  display: flex;
+  gap: 25px;
+  flex-grow: 1;
+}
+
+.nav-left {
+  justify-content: flex-start;
+}
+
+.nav-right {
+  justify-content: flex-end;
+}
+
+header h1, header nav a {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header-nav a {
+  color: #f1f1f1;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.header-nav a:hover {
+  color: #00aaff;
+}
+
+/* Hero image area */
+.hero-image {
+  position: relative;
+  background-image: url('../images/analog-gear.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 650px;
+  overflow: hidden;
+}
+
+/* Overlay behind text with slope */
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.65);
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 60vw;
+  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+
+   clip-path: polygon(0 0, 85% 0, 70% 100%, 0 100%);
+}
+
+/* Text inside overlay */
+.hero-text h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 10px rgba(0, 170, 255, 0.2);
+}
+
+.hero-text p {
+  font-size: 1.2em;
+  color: #ddd;
+  white-space: normal;      /* allow wrapping */
+  word-break: break-word;   /* break long words if needed */
+  overflow-wrap: break-word;
+  max-width: 70%;          /* limit to container width */
+  margin: 0 auto;           /* center if needed */
+  display: inline-block;    /* shrink to content */
+  box-sizing: border-box;
+  padding-right: 10px;      /* optional padding to prevent cut off */
+}
+
+/* Section styling */
+.section {
+  padding: 40px 20px;
+  scroll-margin-top: 90px;
+}
+
+/* Portfolio */
+#portfolio {
+  max-width: 960px;
+  margin: 0 auto 60px;
+  padding: 0 20px;
+}
+
+#portfolio h2 {
+  margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+  background: #1a1a1a;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Spacer */
+.section-spacer {
+  height: 120px;
+  background-color: #0e0e0e;
+}
+
+@keyframes slowScroll {
+  0% {
+    background-position: center 0;
+  }
+  100% {
+    background-position: center 100px;
+  }
+}
+
+/* Responsive Enhancements */
+
+/* 1. Center hero text + full overlay background below ~900px */
+@media (max-width: 900px) {
+  .hero-overlay {
+    width: 100% !important;
+    clip-path: none !important;
+    padding: 20px !important;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  .hero-text h1,
+  .hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+/* 2. Hide left and right header nav items (Letigo) on tablets and phones */
+@media (max-width: 900px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .header-nav {
+    justify-content: center !important;
+  }
+}
+
+/* 3. Smaller text in About section on smaller screens */
+@media (max-width: 768px) {
+  .section.about p,
+  .section.about h2 {
+    font-size: 0.9rem;
+    line-height: 1.3;
+  }
+}
+
+/* Additional responsiveness */
+
+/* Small devices (iPhones, ~320-480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  .header-nav {
+    flex-direction: column;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .nav-left,
+  .nav-right {
+    justify-content: center;
+    gap: 15px;
+    flex-grow: 0;
+  }
+
+  .site-title {
+    font-size: 1.4em;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .hero-image {
+    height: 650px;
+    background-attachment: scroll;
+  }
+
+  .hero-overlay {
+    width: 90vw !important;
+    padding: 15px 20px !important;
+    clip-path: none !important;
+  }
+
+  .hero-text h1 {
+    font-size: 1.8em;
+    line-height: 1.2;
+  }
+
+  .hero-text p {
+    font-size: 1em;
+  }
+
+  .order-btn {
+    font-size: 1.1rem;
+    padding: 14px;
+  }
+}
+
+/* Medium devices (tablets/iPad, ~481-768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  header {
+    padding: 15px 20px;
+  }
+
+  .header-nav {
+    max-width: 700px;
+    gap: 15px;
+  }
+
+  .site-title {
+    font-size: 1.6em;
+  }
+
+  .hero-image {
+    height: 650px;
+    background-attachment: scroll;
+  }
+
+  .hero-overlay {
+    width: 70vw !important;
+    padding: 20px 30px !important;
+    clip-path: polygon(0 0, 85% 0, 70% 100%, 0 100%);
+  }
+
+  .hero-text h1 {
+    font-size: 2.1em;
+  }
+
+  .hero-text p {
+    font-size: 1.1em;
+  }
+
+  .order-btn {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Accessibility and touch targets */
+button,
+.order-btn,
+.switch-a,
+.switch-b {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+
+
+/* Base styles (large screens) */
+.hero-overlay {
+  width: 60vw;
+  clip-path: polygon(0 0, 85% 0, 70% 100%, 0 100%);
+  padding: 20px 40px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Trigger full overlay and centered text at 1024px and below */
+@media (max-width: 1024px) {
+  .hero-overlay {
+    width: 100% !important;
+    clip-path: none !important;
+    padding: 20px !important;
+    text-align: center !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .hero-text h1,
+  .hero-text p {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+}
+
+
+
+
+/* Hero wrapper: fixed width block */
+.hero-wrapper {
+  font-family: 'Montserrat', sans-serif; /* applies to all children */
+  max-width: 600px; /* fixes the block width */
+  margin: -80px 0 0 -120px; /* desktop offset */
+  padding: 40px 20px; /* breathing space */
+  background-color: rgba(0, 0, 0, 0.0);
+  border-radius: 12px;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.0);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1024px) {
+  .hero-wrapper {
+    margin: -80px 0 0 0; /* center for smaller screens */
+    padding: 30px 15px;
+  }
+}
+
+/* Center content inside wrapper */
+.hero-centered {
+  text-align: center;
+}
+
+/* Logo text */
+.hero-logo-text {
+  font-family: "Academy Engraved LET", serif;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 4.2rem;
+  color: #fff;
+  margin: 0;             /* remove default bottom margin */
+  line-height: 1.1;      /* tighten spacing to tagline */
+  letter-spacing: 2px;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1.3rem;
+  color: #c7a898;
+  font-weight: 600;
+  margin: 4px 0 18px 0;  /* small top margin to bring closer to logo */
+  display: block;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+  line-height: 1.2;      /* tighter line spacing */
+}
+
+/* Highlights list */
+.hero-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
+  color: #eaeaea;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.6;
+  column-gap: 40px;
+}
+
+.hero-highlights li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 1px;
+}
+
+.hero-highlights li::before {
+  content: "•";
+  color: #d4a373;
+  position: absolute;
+  left: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+
+/* Button container */
+.hero-buttons {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column; /* Always stack vertically */
+  gap: 10px;
+  align-items: center;
+}
+
+/* Base button style */
+.btn {
+  width: 100%;
+  max-width: 250px; /* Keeps them neat and consistent */
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px; /* More rounded edges */
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Light grey button */
+.btn-light {
+  background-color: #f0f0f0;
+  color: #000;
+}
+
+.btn-light:hover {
+  background-color: #dcdcdc;
+}
+
+/* Primary (Order Now) button */
+.btn-primary {
+  background-color: #5b473d;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #4f423b;
+}
+
+
+/* Shapes container is relative, section already has position: relative */
+
+
+
+/* CSS */
+.floating-image {
+  display: none;  /* hides it initially */
+  position: fixed;           /* stay in viewport */
+  top: 50%;                  /* vertical center */
+  left: 50%;                 /* horizontal center */
+  width: 300px;              /* adjust size */
+  height: auto;
+  z-index: 10;               /* in front of content */
+  transform: translate(-50%, -50%); /* truly center the element */
+}
+
+
+
+
+
+
+
+
+
+
+.services-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 60px;
+}
+
+.service-row {
+  position: relative;
+  width: 100%;
+  height: 500px; /* slightly taller for zoom effect */
+  overflow: hidden;
+}
+
+.service-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%; /* extra zoom */
+  height: 150%; /* extra zoom */
+  object-fit: cover;
+  transform: translateX(0) translateY(0) scale(1.2); /* initial zoom */
+}
+
+.service-text {
+  position: absolute;
+  top: 0;
+  bottom: 0; /* stretch full height of parent image */
+  width: 50vw; /* from center to edge of screen */
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  border-radius: 0; /* remove rounded corners */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically center the text */
+  text-align: center;
+}
+
+/* inner wrapper for padding without affecting outer size */
+.service-text-inner {
+  padding: 60px;     /* only affects text inside */
+  flex: 1;           /* fills the parent container */
+}
+
+
+.left-text {
+  left: 0px;
+}
+
+.right-text {
+  right: 0px;
+}
+
+/* Mobile: overlay covers entire width */
+@media (max-width: 768px) {
+  .service-text {
+    width: 100%;
+    left: 0;
+    right: 0;
+    padding: 0px;
+  }
+}
+
+.service-text h2 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.service-text p, 
+.service-text li {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.service-text ul {
+  margin: 10px 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.service-text ul li::before {
+  content: "♪ ";
+  color: #fff;
+}
+
+
+/* Eagle Tally Board */
+#eagle-tally {
+  position: fixed;
+  top: -120px; /* hidden above screen */
+  right: 20px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  z-index: 2000;
+}
+
+#eagle-tally h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#eagle-count {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+
+/* Footer css for nav buttons */
+
+footer {
+  text-align: center;
+  padding: 20px 10px;
+  font-family: sans-serif;
+}
+
+.footer-nav {
+  margin-bottom: 10px;
+}
+
+.footer-nav a {
+  margin: 0 12px;
+  text-decoration: none;
+  color: #ddd;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: #fff;
+}
+
+.footer-info {
+  font-size: 14px;
+  color: #aaa;
+}
+
+

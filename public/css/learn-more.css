@@ -1,0 +1,145 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  color: #e0e6f0; /* lighter text for darker background */
+  line-height: 1.6;
+  background: #161616; /* dark navy background */
+  text-align: center;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.services-header {
+  background: linear-gradient(135deg, #080a0d, #1b2a41);
+  color: #e0e6f0;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative; /* important to contain particles */
+  overflow: hidden;   /* prevent particles from escaping */
+}
+
+.services-header h1 {
+  font-size: 3rem; /* make it bigger (adjust as needed) */
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.services-header p {
+  font-size: 1.1rem;
+  color: #b0b7c3; /* lighter grey */
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* --- Cards --- */
+.service-cards,
+.pricing-cards {
+  display: flex;
+  flex-wrap: wrap;             /* allow wrapping for smaller screens */
+  gap: 20px;                   /* spacing between cards */
+  justify-content: center;     /* center cards on each row */
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.service-card,
+.pricing-card {
+  background: #1b212a;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  text-align: center;
+  color: #d8e3f0;
+  flex: 1 1 calc(25% - 20px); /* 4 per row, accounting for gap */
+  min-width: 250px;            /* prevent cards from shrinking too much */
+  box-sizing: border-box;
+}
+
+/* Pricing */
+.pricing-card .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #3b82f6; /* bright blue accent */
+  display: block;
+  margin: 15px 0;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.btn:hover {
+  background: #1e40af; /* darker blue */
+}
+
+/* Footer */
+.services-footer {
+  background: #161616;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+.back-button {
+  position: fixed;        /* float above all content */
+  top: 20px;              /* distance from top */
+  left: 20px;             /* distance from left */
+  z-index: 1000;          /* ensure it’s on top */
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #3b82f6;         /* bright blue accent */
+  background: rgba(0,0,0,0.6);  /* semi-transparent for contrast */
+  border: 2px solid #173360;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.back-button:hover {
+  color: #fff;
+  background: #091730;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.header-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 0; /* behind header text */
+}
+
+/* --- Responsive Layout --- */
+
+/* Tablet: 2 per row */
+@media (max-width: 1024px) and (min-width: 600px) {
+  .service-card,
+  .pricing-card {
+    flex: 0 1 calc(50% - 20px); /* 2 per row */
+  }
+}
+
+/* Mobile: 1 per row */
+@media (max-width: 599px) {
+  .service-card,
+  .pricing-card {
+    flex: 1 1 100%; /* stack vertically */
+  }
+}

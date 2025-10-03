@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Levi Bennett - Musician Profile</title>
+  <link rel="stylesheet" href="css/profile-card.css" />
+</head>
+<body>
+  <div class="profile-container">
+    <div class="profile-image" data-images="musicians/logan-zaud.jpg,musicians/logan-zaud.jpg,musicians/logan-zaud.jpg">
+  <img src="musicians/logan-zaud.jpg" alt="Logan Zaud" />
+</div>
+    <div class="profile-content">
+      <div class="back-button-container">
+        <a href="index.html#session-musicians-section" class="back-button">← Back</a>
+      </div>
+
+      <h1>Logan Zaud</h1>
+      <h3>He plays upright bass real good</h3>
+      <p>
+        Logan Zaud is a versatile woodwind player with a deep love 
+        for expressive, soulful melodies and tight ensemble work. 
+        His background spans classical training and jazz improvisation, 
+        giving him the flexibility to adapt to any musical situation. 
+        Whether laying down buttery smooth tenor lines or electrifying a 
+        solo with alto fire, Levi brings unmatched passion and tone to every performance. 
+        He thrives in collaboration, always listening and blending to lift the track's 
+        emotional core. A true craftsman of the breath-driven voice, Levi continues to explore the full sonic potential of his instruments in every session.
+      </p>
+
+      <div class="audio-samples">
+        <h4>Sample Recordings</h4>
+
+        <div class="audio-wrapper">
+          <!-- Full mix audio (default visible) -->
+          <div class="sample-player" data-audio-full="audio/levi/levi-autumn-full.mp3" data-audio-solo="audio/levi/levi-autumn-solo.mp3" style="max-width: 760px;">
+  <p class="genre-name">Levi Bennett - Autumn Sample</p>
+
+  <div class="player-top">
+    <button class="play-pause" aria-label="Play/Pause">▶</button>
+    <div class="progress-area">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="player-bottom">
+    <button class="solo-button">Solo</button>
+  </div>
+</div>
+
+        <div class="sample-player" data-audio-full="audio/levi-autumn-full.mp3" data-audio-solo="audio/levi-autumn-solo.mp3" style="max-width: 760px;">
+  <p class="genre-name">Levi Bennett - Filler 1</p>
+
+  <div class="player-top">
+    <button class="play-pause" aria-label="Play/Pause">▶</button>
+    <div class="progress-area">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="player-bottom">
+    <button class="solo-button">Solo</button>
+  </div>
+</div>
+
+        <div class="sample-player" data-audio-full="audio/levi-autumn-full.mp3" data-audio-solo="audio/levi-autumn-solo.mp3" style="max-width: 760px;">
+  <p class="genre-name">Levi Bennett - Filler 2</p>
+
+  <div class="player-top">
+    <button class="play-pause" aria-label="Play/Pause">▶</button>
+    <div class="progress-area">
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="player-bottom">
+    <button class="solo-button">Solo</button>
+  </div>
+</div>
+
+      <button class="contact-button" id="contactBtn">Contact Now</button>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contact Levi Bennett</h2>
+      <form id="contactForm" enctype="multipart/form-data">
+        <label for="fullName">Full Name</label>
+        <input id="fullName" name="fullName" type="text" required />
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" required />
+
+        <label for="topic">Topic</label>
+        <input id="topic" name="topic" type="text" />
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <label for="fileUpload">Attach MP3/WAV</label>
+        <input id="fileUpload" name="fileUpload" type="file" accept=".mp3, .wav" />
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/profile-card.js"></script>
+</body>
+</html>
