@@ -5,17 +5,9 @@ console.log("Letigo Studios site loaded.");
 // ---- Stuff for session musician scrolling shit ----
 
 
- const gallery = document.querySelector('.musicians-gallery');
 
-if (gallery) {
-  // Just basic scroll functionality, no cloning or loop resets
 
-  // Optional: You can add any custom behavior on scroll here, 
-  // but for now, it just lets the user scroll freely.
-  gallery.addEventListener('scroll', () => {
-    // You can add things like lazy loading or animations here if desired.
-  });
-}
+
 
 // ---- Parallax Effect ----
 const parallax = document.querySelector('.parallax-section');

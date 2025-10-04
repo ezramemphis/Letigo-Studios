@@ -126,6 +126,60 @@
 }
 
 
+
+/* SCROLL BAR */
+
+.musicians-scroll-wrapper {
+  overflow-x: auto;          /* horizontal scroll */
+  overflow-y: hidden;        /* hide vertical scroll */
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+  scrollbar-width: thin;     /* Firefox: thin scrollbar */
+}
+
+.musicians-scroll-wrapper::-webkit-scrollbar {
+  height: 12px;              /* set scrollbar height for horizontal */
+}
+
+.musicians-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.5);  /* scrollbar color */
+  border-radius: 6px;
+}
+
+.musicians-scroll-wrapper::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.1);  /* track color */
+  border-radius: 6px;
+}
+
+/* MAKE IT LOOK PRETTY NOW */
+
+/* Container scrollbar styling */
+.musicians-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #3f4f5c #0e0e0e;
+  background-color: #0e0e0e;
+  padding: 0 60px; /* padding left/right to keep content away from edges */
+  box-sizing: border-box; /* ensures padding doesn't affect width */
+}
+
+/* Scrollbar track */
+.musicians-scroll-wrapper::-webkit-scrollbar-track {
+  background-color: #0e0e0e;
+  border-radius: 10px;
+  box-shadow: inset 0 0 3px rgba(255, 255, 255, 0.05);
+}
+
+
+
+
+
+
+
+
+
+
 /* RESPONSIVE */
 @media (max-width: 500px) {
   .musician-card {
